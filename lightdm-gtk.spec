@@ -25,7 +25,7 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 Obsoletes:      lightdm-gtk2 < 1.8.5-15
 
 Obsoletes:      lightdm-gtk-common < 2.0
-Obsoletes:      lightdm-gtk-greeter < 1.1.5-4
+Obsoletes:      lightdm-gtk-greeter <= 2.0.1
 Provides:       lightdm-gtk-greeter = %{version}-%{release}
 Provides:       lightdm-greeter = 1.2
 
@@ -112,6 +112,7 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &> /dev/null || :
 %changelog
 * Fri Sep 30 2016 Jajauma's Packages <jajauma@yandex.ru> - 2.0.1-2
 - Patch for building against lightdm 1.19.5
+- Provide clean upgrade path from existing lightdm-gtk-greeter-2.0.1-4
 
 * Sat Apr 02 2016 Rex Dieter <rdieter@fedoraproject.org> - 2.0.1-1
 - lightdm-gtk-2.0.1 (#1132844)
