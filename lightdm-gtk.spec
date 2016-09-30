@@ -2,11 +2,12 @@
 Summary:        LightDM GTK Greeter
 Name:           lightdm-gtk
 Version:        2.0.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 
 License:        GPLv3+
 URL:            https://launchpad.net/lightdm-gtk-greeter
 Source0:        https://launchpad.net/lightdm-gtk-greeter/2.0/%{version}/+download/lightdm-gtk-greeter-%{version}.tar.gz
+Patch0:         lightdm-1.19.5-api-compat.patch
 
 Source10:       60-lightdm-gtk-greeter.conf
 
@@ -109,6 +110,9 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &> /dev/null || :
 
 
 %changelog
+* Fri Sep 30 2016 Jajauma's Packages <jajauma@yandex.ru> - 2.0.1-2
+- Patch for building against lightdm 1.19.5
+
 * Sat Apr 02 2016 Rex Dieter <rdieter@fedoraproject.org> - 2.0.1-1
 - lightdm-gtk-2.0.1 (#1132844)
 - use conf.d snippets (#1096216)
