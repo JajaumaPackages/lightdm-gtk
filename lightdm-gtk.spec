@@ -2,7 +2,7 @@
 Summary:        LightDM GTK Greeter
 Name:           lightdm-gtk
 Version:        2.0.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 
 License:        GPLv3+
 URL:            https://launchpad.net/lightdm-gtk-greeter
@@ -31,15 +31,6 @@ Provides:       lightdm-greeter = 1.2
 
 Requires:       lightdm%{?_isa}
 
-# for default background/wallpaper
-%if 0%{?fedora}
-%global background %{_datadir}/backgrounds/default.png
-Requires:       desktop-backgrounds-compat
-%endif
-%if 0%{?rhel}
-%global background %{_datadir}/backgrounds/day.jpg
-Requires:       system-logos
-%endif
 # owner of HighContrast gtk/icon themes
 Requires:       gnome-themes-standard
 
@@ -49,11 +40,6 @@ A LightDM greeter that uses the GTK3 toolkit.
 
 %prep
 %autosetup -n lightdm-gtk-greeter-%{version} -p1
-
-%if 0%{?background:1}
-sed -i.background -e "s|#background=.*|background=%{background}|" \
-  data/lightdm-gtk-greeter.conf
-%endif
 
 
 %build
@@ -110,6 +96,9 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &> /dev/null || :
 
 
 %changelog
+* Tue Nov 08 2016 Jajauma's Packages <jajauma@yandex.ru> - 2.0.1-3
+- Skip rewriting factory config with vendor background image
+
 * Fri Sep 30 2016 Jajauma's Packages <jajauma@yandex.ru> - 2.0.1-2
 - Patch for building against lightdm 1.19.5
 - Provide clean upgrade path from existing lightdm-gtk-greeter-2.0.1-4
